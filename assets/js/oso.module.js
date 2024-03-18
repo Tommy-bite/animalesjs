@@ -1,6 +1,7 @@
-import { Animal } from "./animales.module.js";
+import { Animal } from "./animal.module.js";
 
-class Oso extends Animal {
+
+export class Oso extends Animal {
     gruñir(){
         
     }

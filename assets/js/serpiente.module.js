@@ -1,6 +1,7 @@
-import { Animal } from "./animales.module.js";
+import { Animal } from "./animal.module.js";
 
-class Serpiente extends Animal {
+
+export class Serpiente extends Animal {
     sisear(){
 
     }
