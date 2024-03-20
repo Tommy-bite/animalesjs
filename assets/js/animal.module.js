@@ -31,5 +31,4 @@ export class Animal {
     get getSonido(){
         return this.#sonido;
     }
-
 }
