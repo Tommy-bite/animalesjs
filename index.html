@@ -87,13 +87,6 @@
 
   <audio id="player" class="d-none"></audio>
 
-  <div class="modal fade" id="exampleModal">
-    <div class="modal-dialog modal-dialog-centered w-25" role="document">
-      <div class="modal-content bg-dark">
-        <div class="modal-body">...</div>
-      </div>
-    </div>
-  </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -105,12 +98,59 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
   <script>
+    function abrirModal(nombre, img, comentarios, edad) {
+      // Crear el contenido del modal dinámicamente
+      let modal = document.getElementById('exampleModal');
+      const modalContent = `
+        <div class="modal-dialog" role="document" >
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title">${nombre}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center"> 
+                      <img src="assets/imgs/${img}" width="350" >
+                    </div>
+                    <p class="text-center">${edad}</p>
+                    <p class="text-center">Comentarios:</p>
+                    <hr>
+                    <p class="text-center text-success fw-bold">"${comentarios}"</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+      // Crear un elemento div para el modal
+      const modalContainer = document.createElement('div');
+      modalContainer.classList.add('modal', 'fade');
+      modalContainer.setAttribute('id', 'exampleModal');
+      modalContainer.setAttribute('tabindex', '-1');
+      modalContainer.setAttribute('role', 'dialog');
+      modalContainer.setAttribute('aria-labelledby', 'exampleModalLabel');
+      modalContainer.setAttribute('aria-hidden', 'true');
+      modalContainer.innerHTML = modalContent;
+
+      // Agregar el modal al final del cuerpo del documento
+      document.body.appendChild(modalContainer);
+
+
+      modal.innerHTML = modalContent;
+      // Mostrar el modal
+      $('#exampleModal').modal('show');
+    }
+
     function reproducirAudio(url) {
       const audio = new Audio(url);
       audio.play();
     }
   </script>
-  <script type="module" src="assets/js/index.js" ></script>
+  <script type="module" src="assets/js/index.js"></script>
 
 </body>
 

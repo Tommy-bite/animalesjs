@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let arrayAnimales = [];
     let animalEncontrado;
     let sonido;
+    let contador = 1;
 
     (async () => {
         try {
@@ -53,11 +54,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function creaHTMLCard(animal, sonido) {
-        console.log(sonido);
+        console.log(animal);
         const url = `assets/sounds/${sonido}`;
         Animales.innerHTML += `
-        <div class="card mx-2 my-1" style="width: 12rem;"  >
-            <img src="assets/imgs/${animal.getImg}" class="card-img-top" height="220" alt="Imagen del animal">
+        <div class="card mx-2 my-1" style="width: 12rem;"   >
+            <img src="assets/imgs/${animal.getImg}" class="card-img-top" height="220" alt="Imagen del animal" onclick="abrirModal('${animal.getNombre}', '${animal.getImg}', '${animal.comentarios}', '${animal.getEdad}')">
             <button onclick="reproducirAudio('${url}')" class="btn btn-secondary d-block"><img src="assets/imgs/audio.svg"></button>
         </div>
     `
@@ -119,29 +120,34 @@ document.addEventListener("DOMContentLoaded", function () {
         if(validacion){
             switch (animalSeleccionado) {
                 case "Lobo":
-                    const lobo = new Lobo(animalEncontrado.name, edad.value, animalEncontrado.imagen, comentarios.value, animalEncontrado.sonido);
+                    const lobo = new Lobo(contador,animalEncontrado.name, edad.value, animalEncontrado.imagen, comentarios.value, animalEncontrado.sonido);
                     sonido = lobo.aullar();
                     creaHTMLCard(lobo, sonido);
+                    contador++;
                     break;
                 case "Serpiente":
-                    const serpiente = new Serpiente(animalEncontrado.name, edad.value, animalEncontrado.imagen, comentarios.value, animalEncontrado.sonido);
+                    const serpiente = new Serpiente(contador,animalEncontrado.name, edad.value, animalEncontrado.imagen, comentarios.value, animalEncontrado.sonido);
                     sonido = serpiente.sisear();
                     creaHTMLCard(serpiente, sonido);
+                    contador++;
                     break;
                 case "Leon":
-                    const leon = new Leon(animalEncontrado.name, edad.value, animalEncontrado.imagen, comentarios.value, animalEncontrado.sonido);
+                    const leon = new Leon(contador,animalEncontrado.name, edad.value, animalEncontrado.imagen, comentarios.value, animalEncontrado.sonido);
                     sonido = leon.rugir();
                     creaHTMLCard(leon, sonido);
+                    contador++;
                     break;
                 case "Oso":
-                    const oso = new Oso(animalEncontrado.name, edad.value, animalEncontrado.imagen, comentarios.value, animalEncontrado.sonido);
+                    const oso = new Oso(contador,animalEncontrado.name, edad.value, animalEncontrado.imagen, comentarios.value, animalEncontrado.sonido);
                     sonido = oso.gruñir();
                     creaHTMLCard(oso, sonido);
+                    contador++;
                     break;
                 case "Aguila":
-                    const aguila = new Aguila(animalEncontrado.name, edad.value, animalEncontrado.imagen, comentarios.value, animalEncontrado.sonido);
+                    const aguila = new Aguila(contador,animalEncontrado.name, edad.value, animalEncontrado.imagen, comentarios.value, animalEncontrado.sonido);
                     sonido = aguila.chillar();
                     creaHTMLCard(aguila, sonido);
+                    contador++;
                     break;
                 default:
                     console.log("seleccione una opción válida");

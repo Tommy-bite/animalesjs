@@ -1,17 +1,23 @@
 export class Animal {
 
+    #id;
     #nombre;
     #edad;
     #img;
-    #comentarios;
+    comentarios;
     #sonido;
 
-    constructor(nombre, edad, img, comentarios, sonido){
+    constructor(id,nombre, edad, img, comentarios, sonido){
+        this.#id = id;
         this.#nombre = nombre;
         this.#edad = edad;
         this.#img = img;
-        this.#comentarios = comentarios;
+        this.comentarios = comentarios;
         this.#sonido = sonido;
+    }
+
+    get getId(){
+        return this.#id;
     }
 
     get getNombre(){
@@ -25,7 +31,7 @@ export class Animal {
     }
 
     set setComentarios(nuevoComentarios){
-        this.#comentarios = nuevoComentarios;
+        this.comentarios = nuevoComentarios;
     }
 
     get getSonido(){
